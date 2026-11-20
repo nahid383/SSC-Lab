@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vernier Calipers Virtual Laboratory | ভার্নিয়ার ক্যালিপার্স ভার্চুয়াল ল্যাব</title>
+<meta name="description" content="Interactive SSC Physics lab for learning Vernier Calipers in Bangla and English.">
+<link rel="stylesheet" href="Slide_Calirpus.css">
+</head>
+<body class="lang-both">
+
+<!-- ================= TOP BAR ================= -->
+<header class="topbar">
+  <button class="icon-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+  <a class="brand" href="#home">
+    <span class="brand-mark">⌀</span>
+    <span class="brand-text"><strong>Vernier Calipers Virtual Lab</strong><small>ভার্নিয়ার ক্যালিপার্স ভার্চুয়াল ল্যাব · SSC Physics</small></span>
+  </a>
+  <div class="top-actions">
+    <div class="seg" role="group" aria-label="Language">
+      <button data-lang="en">EN</button>
+      <button data-lang="bn">বাংলা</button>
+      <button data-lang="both" class="active">EN + বাংলা</button>
+    </div>
+    <button class="pill" id="presentBtn" title="Presentation mode">🖥 <span class="en">Present</span><span class="bn">উপস্থাপনা</span></button>
+    <button class="pill" id="fsBtn" title="Fullscreen">⛶ <span class="en">Fullscreen</span><span class="bn">ফুলস্ক্রিন</span></button>
+    <div class="ring" id="topProgress" title="Course progress">0%</div>
+  </div>
+</header>
+
+<div class="layout">
+<!-- ================= SIDEBAR ================= -->
+<aside class="sidebar" id="sidebar">
+  <nav id="nav">
+    <a href="#home" data-nav="home"><span class="nav-ic">🏠</span><span class="nav-t"><span class="en">Home</span><span class="bn">হোম</span></span></a>
+    <a href="#m1" data-nav="m1"><span class="nav-ic">📘</span><span class="nav-t"><span class="en">1 · Introduction</span><span class="bn">১ · পরিচিতি</span></span><i class="done-dot"></i></a>
+    <a href="#m2" data-nav="m2"><span class="nav-ic">🔬</span><span class="nav-t"><span class="en">2 · Simulator</span><span class="bn">২ · সিমুলেটর</span></span><i class="done-dot"></i></a>
+    <a href="#m3" data-nav="m3"><span class="nav-ic">📐</span><span class="nav-t"><span class="en">3 · Least Count</span><span class="bn">৩ · লঘিষ্ঠ গণন</span></span><i class="done-dot"></i></a>
+    <a href="#m4" data-nav="m4"><span class="nav-ic">⚖️</span><span class="nav-t"><span class="en">4 · Zero Error</span><span class="bn">৪ · শূন্য ত্রুটি</span></span><i class="done-dot"></i></a>
+    <a href="#m5" data-nav="m5"><span class="nav-ic">🧪</span><span class="nav-t"><span class="en">5 · Measurement Practice</span><span class="bn">৫ · পরিমাপ অনুশীলন</span></span><i class="done-dot"></i></a>
+    <a href="#m6" data-nav="m6"><span class="nav-ic">📝</span><span class="nav-t"><span class="en">6 · SSC Preparation</span><span class="bn">৬ · এসএসসি প্রস্তুতি</span></span><i class="done-dot"></i></a>
+    <a href="#m7" data-nav="m7"><span class="nav-ic">🧮</span><span class="nav-t"><span class="en">7 · Step-by-Step Solver</span><span class="bn">৭ · ধাপে ধাপে সমাধান</span></span><i class="done-dot"></i></a>
+    <a href="#m8" data-nav="m8"><span class="nav-ic">🎓</span><span class="nav-t"><span class="en">8 · Teacher Mode</span><span class="bn">৮ · শিক্ষক মোড</span></span><i class="done-dot"></i></a>
+    <a href="#m9" data-nav="m9"><span class="nav-ic">📋</span><span class="nav-t"><span class="en">9 · Formula Cheat Sheet</span><span class="bn">৯ · সূত্র তালিকা</span></span><i class="done-dot"></i></a>
+    <a href="#m10" data-nav="m10"><span class="nav-ic">📊</span><span class="nav-t"><span class="en">10 · Learning Progress</span><span class="bn">১০ · অগ্রগতি</span></span><i class="done-dot"></i></a>
+  </nav>
+  <div class="side-foot"><span class="en">Tip: press <kbd>←</kbd> <kbd>→</kbd> on the simulator for 0.1 mm steps.</span><span class="bn">টিপস: সিমুলেটরে <kbd>←</kbd> <kbd>→</kbd> চাপলে ০.১ মি.মি. করে সরবে।</span></div>
+</aside>
+<div class="scrim" id="scrim"></div>
+
+<main id="main">
+
+<!-- ================= HOME ================= -->
+<section class="module" id="home">
+  <div class="hero">
+    <div class="hero-text">
+      <p class="eyebrow"><span class="en">SSC Physics · Practical Skills</span><span class="bn">এসএসসি পদার্থবিজ্ঞান · ব্যবহারিক দক্ষতা</span></p>
+      <h1><span class="en">Vernier Calipers Virtual Laboratory</span><span class="bn">ভার্নিয়ার ক্যালিপার্স ভার্চুয়াল ল্যাবরেটরি</span></h1>
+      <p class="lead"><span class="en">See it. Move it. Measure it. Learn how the main scale and vernier scale work together — from your very first look at the instrument to SSC exam level.</span><span class="bn">দেখো, সরাও, মাপো। প্রধান স্কেল ও ভার্নিয়ার স্কেল কীভাবে একসাথে কাজ করে তা শেখো — একদম শুরু থেকে এসএসসি পরীক্ষার স্তর পর্যন্ত।</span></p>
+      <div class="hero-btns">
+        <a class="btn primary" href="#m1"><span class="en">Start learning</span><span class="bn">শেখা শুরু করো</span></a>
+        <a class="btn" href="#m2"><span class="en">Open simulator</span><span class="bn">সিমুলেটর খোলো</span></a>
+        <a class="btn ghost" href="#m8"><span class="en">Teacher mode</span><span class="bn">শিক্ষক মোড</span></a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 420 220" class="hero-svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#94a3b8"/></linearGradient></defs>
+        <rect x="20" y="70" width="380" height="44" rx="4" fill="url(#hg)" stroke="#475569"/>
+        <g stroke="#0f172a" stroke-width="1.2">
+          <path d="M40 114V92M46 114V104M52 114V104M58 114V104M64 114V104M70 114V96M76 114V104M82 114V104M88 114V104M94 114V104M100 114V92M106 114V104M112 114V104M118 114V104M124 114V104M130 114V96M136 114V104M142 114V104M148 114V104M154 114V104M160 114V92M166 114V104M172 114V104M178 114V104M184 114V104M190 114V96M196 114V104M202 114V104M208 114V104M214 114V104M220 114V92M226 114V104M232 114V104M238 114V104M244 114V104M250 114V96M256 114V104M262 114V104M268 114V104M274 114V104M280 114V92"/>
+        </g>
+        <polygon points="20,70 40,70 40,205 28,205 20,190" fill="url(#hg)" stroke="#475569"/>
+        <rect x="120" y="114" width="96" height="34" fill="#dbeafe" stroke="#1e3a8a"/>
+        <g stroke="#1e3a8a"><path d="M122 114v14M127.4 114v9M132.8 114v9M138.2 114v9M143.6 114v14M149 114v9M154.4 114v9M159.8 114v9M165.2 114v9M170.6 114v14"/></g>
+        <polygon points="120,114 148,114 148,205 132,205 120,195" fill="url(#hg)" stroke="#475569" transform="translate(0,0)"/>
+        <rect x="120" y="60" width="96" height="24" rx="4" fill="#cbd5e1" stroke="#475569"/>
+        <circle cx="182" cy="52" r="9" fill="#f59e0b" stroke="#92400e"/>
+      </svg>
+    </div>
+  </div>
+
+  <h2 class="section-title"><span class="en">Your learning path</span><span class="bn">তোমার শেখার পথ</span></h2>
+  <div class="card-grid" id="homeCards">
+    <a class="module-card" href="#m1"><b>01</b><h3><span class="en">Introduction</span><span class="bn">পরিচিতি</span></h3><p><span class="en">What it is, why we need it, and every part labelled.</span><span class="bn">এটি কী, কেন দরকার এবং প্রতিটি অংশের পরিচয়।</span></p></a>
+    <a class="module-card" href="#m2"><b>02</b><h3><span class="en">Simulator</span><span class="bn">সিমুলেটর</span></h3><p><span class="en">Drag the jaw, measure objects, read live MSR/VSR.</span><span class="bn">চোয়াল টানো, বস্তু মাপো, MSR/VSR সরাসরি দেখো।</span></p></a>
+    <a class="module-card" href="#m3"><b>03</b><h3><span class="en">Least Count</span><span class="bn">লঘিষ্ঠ গণন</span></h3><p><span class="en">Why LC = 0.01 cm — with an adjustable demo.</span><span class="bn">কেন LC = 0.01 সে.মি. — পরিবর্তনযোগ্য ডেমোসহ।</span></p></a>
+    <a class="module-card" href="#m4"><b>04</b><h3><span class="en">Zero Error</span><span class="bn">শূন্য ত্রুটি</span></h3><p><span class="en">Positive, negative, and zero correction.</span><span class="bn">ধনাত্মক, ঋণাত্মক ও শূন্য সংশোধন।</span></p></a>
+    <a class="module-card" href="#m5"><b>05</b><h3><span class="en">Measurement Practice</span><span class="bn">পরিমাপ অনুশীলন</span></h3><p><span class="en">Random challenges with accuracy feedback.</span><span class="bn">এলোমেলো চ্যালেঞ্জ ও নির্ভুলতার ফিডব্যাক।</span></p></a>
+    <a class="module-card" href="#m6"><b>06</b><h3><span class="en">SSC Preparation</span><span class="bn">এসএসসি প্রস্তুতি</span></h3><p><span class="en">40+ questions, quiz, explanations.</span><span class="bn">৪০+ প্রশ্ন, কুইজ ও ব্যাখ্যা।</span></p></a>
+    <a class="module-card" href="#m7"><b>07</b><h3><span class="en">Solver</span><span class="bn">সমাধানকারী</span></h3><p><span class="en">Enter values, see every step.</span><span class="bn">মান দাও, প্রতিটি ধাপ দেখো।</span></p></a>
+    <a class="module-card" href="#m8"><b>08</b><h3><span class="en">Teacher Mode</span><span class="bn">শিক্ষক মোড</span></h3><p><span class="en">Reveal answers step by step in class.</span><span class="bn">ক্লাসে ধাপে ধাপে উত্তর প্রকাশ।</span></p></a>
+    <a class="module-card" href="#m9"><b>09</b><h3><span class="en">Cheat Sheet</span><span class="bn">সূত্র তালিকা</span></h3><p><span class="en">All formulas with copy buttons.</span><span class="bn">সব সূত্র, কপি বাটনসহ।</span></p></a>
+    <a class="module-card" href="#m10"><b>10</b><h3><span class="en">Progress</span><span class="bn">অগ্রগতি</span></h3><p><span class="en">Scores and practice performance.</span><span class="bn">স্কোর ও অনুশীলনের ফলাফল।</span></p></a>
+  </div>
+
+  <div class="card formula-strip">
+    <div><small><span class="en">Least Count</span><span class="bn">লঘিষ্ঠ গণন</span></small><code>LC = 1 MSD ÷ N</code></div>
+    <div><small><span class="en">Observed reading</span><span class="bn">পর্যবেক্ষিত পাঠ</span></small><code>MSR + (n × LC)</code></div>
+    <div><small><span class="en">Correct reading</span><span class="bn">সঠিক পাঠ</span></small><code>Observed − Zero error</code></div>
+  </div>
+</section>
+
+<!-- ================= MODULE 1 ================= -->
+<section class="module" id="m1">
+  <h2 class="module-title"><span class="mnum">1</span><span class="en">Introduction to Vernier Calipers</span><span class="bn">ভার্নিয়ার ক্যালিপার্সের পরিচিতি</span></h2>
+
+  <div class="card-grid two">
+    <article class="card">
+      <h3><span class="en">What is a Vernier Calipers?</span><span class="bn">ভার্নিয়ার ক্যালিপার্স কী?</span></h3>
+      <p><span class="en">A Vernier Calipers is a precision instrument for measuring small lengths — the diameter of a wire, the thickness of a coin, the width of a pipe — correct up to <b>0.01 cm (0.1 mm)</b>. It carries <b>two scales</b>: a fixed <i>main scale</i> and a sliding <i>vernier scale</i>. It is named after Pierre Vernier, who invented the vernier scale in 1631.</span><span class="bn">ভার্নিয়ার ক্যালিপার্স একটি নিখুঁত পরিমাপক যন্ত্র, যা দিয়ে তারের ব্যাস, মুদ্রার পুরুত্ব বা পাইপের প্রস্থের মতো ছোট দৈর্ঘ্য <b>০.০১ সে.মি. (০.১ মি.মি.)</b> পর্যন্ত নির্ভুলভাবে মাপা যায়। এতে <b>দুটি স্কেল</b> থাকে: স্থির <i>প্রধান স্কেল</i> এবং চলমান <i>ভার্নিয়ার স্কেল</i>। পিয়ের ভার্নিয়ার ১৬৩১ সালে ভার্নিয়ার স্কেল আবিষ্কার করেন, তাঁর নামেই যন্ত্রটির নাম।</span></p>
+    </article>
+    <article class="card">
+      <h3><span class="en">Why do we use it?</span><span class="bn">কেন ব্যবহার করি?</span></h3>
+      <p><span class="en">A school ruler has marks 1 mm apart, so we can only guess anything smaller. Imagine measuring a pencil lead of 0.7 mm — the ruler cannot say! The vernier scale lets us read the tiny fraction between two marks <b>without guessing</b>.</span><span class="bn">সাধারণ স্কেলে দাগগুলো ১ মি.মি. দূরে দূরে থাকে, তাই এর চেয়ে ছোট মান কেবল অনুমান করা যায়। ০.৭ মি.মি. পুরুত্বের পেন্সিলের শিস মাপতে চাইলে স্কেল দিয়ে নিশ্চিত বলা যায় না! ভার্নিয়ার স্কেলের সাহায্যে দুই দাগের মাঝের ক্ষুদ্র অংশ <b>অনুমান ছাড়াই</b> পড়া যায়।</span></p>
+    </article>
+    <article class="card">
+      <h3><span class="en">Purpose</span><span class="bn">উদ্দেশ্য</span></h3>
+      <p><span class="en">To measure lengths more accurately than a ruler, in <b>three ways</b> with one instrument: outside size, inside size, and depth.</span><span class="bn">একটি যন্ত্র দিয়েই <b>তিনভাবে</b> স্কেলের চেয়ে নির্ভুল মাপা: বাইরের মাপ, ভিতরের মাপ এবং গভীরতা।</span></p>
+    </article>
+    <article class="card">
+      <h3><span class="en">What can it measure?</span><span class="bn">কী কী মাপা যায়?</span></h3>
+      <ul class="tick-list">
+        <li><span class="en"><b>External diameter</b> — coin, marble, wire, cylinder (outside jaws)</span><span class="bn"><b>বাইরের ব্যাস</b> — মুদ্রা, মার্বেল, তার, বেলন (বাইরের চোয়াল)</span></li>
+        <li><span class="en"><b>Internal diameter</b> — pipe, ring, bangle, bottle neck (inside jaws)</span><span class="bn"><b>ভিতরের ব্যাস</b> — পাইপ, আংটি, চুড়ি, বোতলের মুখ (ভিতরের চোয়াল)</span></li>
+        <li><span class="en"><b>Depth</b> — glass, cup, hole, container (depth rod)</span><span class="bn"><b>গভীরতা</b> — গ্লাস, কাপ, গর্ত, পাত্র (গভীরতা দণ্ড)</span></li>
+        <li><span class="en"><b>Length / thickness</b> — small box, book, plate</span><span class="bn"><b>দৈর্ঘ্য / পুরুত্ব</b> — ছোট বাক্স, বই, পাত</span></li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="card">
+    <h3><span class="en">Ruler vs Vernier Calipers</span><span class="bn">স্কেল বনাম ভার্নিয়ার ক্যালিপার্স</span></h3>
+    <div class="table-wrap"><table class="cmp">
+      <thead><tr><th><span class="en">Feature</span><span class="bn">বৈশিষ্ট্য</span></th><th><span class="en">Ordinary ruler</span><span class="bn">সাধারণ স্কেল</span></th><th><span class="en">Vernier Calipers</span><span class="bn">ভার্নিয়ার ক্যালিপার্স</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="en">Smallest reading</span><span class="bn">ক্ষুদ্রতম পাঠ</span></td><td>1 mm = 0.1 cm</td><td><b>0.1 mm = 0.01 cm</b></td></tr>
+        <tr><td><span class="en">Accuracy</span><span class="bn">নির্ভুলতা</span></td><td><span class="en">Low (estimate between marks)</span><span class="bn">কম (দাগের মাঝে অনুমান)</span></td><td><span class="en">High (read exactly)</span><span class="bn">বেশি (সঠিক পাঠ)</span></td></tr>
+        <tr><td><span class="en">Inside diameter</span><span class="bn">ভিতরের ব্যাস</span></td><td><span class="en">Very difficult</span><span class="bn">খুব কঠিন</span></td><td><span class="en">Easy (inside jaws)</span><span class="bn">সহজ (ভিতরের চোয়াল)</span></td></tr>
+        <tr><td><span class="en">Depth</span><span class="bn">গভীরতা</span></td><td><span class="en">Not possible directly</span><span class="bn">সরাসরি সম্ভব নয়</span></td><td><span class="en">Depth rod</span><span class="bn">গভীরতা দণ্ড</span></td></tr>
+        <tr><td><span class="en">Holding the object</span><span class="bn">বস্তু ধরা</span></td><td><span class="en">Object just lies beside it</span><span class="bn">বস্তু পাশে রাখা হয়</span></td><td><span class="en">Jaws grip the object firmly</span><span class="bn">চোয়াল বস্তুকে আঁটকে ধরে</span></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <h3><span class="en">Everyday examples</span><span class="bn">দৈনন্দিন উদাহরণ</span></h3>
+    <div class="chip-row static">
+      <span class="chip">🪙 <span class="en">Thickness of a coin</span><span class="bn">মুদ্রার পুরুত্ব</span></span>
+      <span class="chip">🔩 <span class="en">Diameter of a nut-bolt</span><span class="bn">নাট-বল্টুর ব্যাস</span></span>
+      <span class="chip">💍 <span class="en">Inner size of a bangle</span><span class="bn">চুড়ির ভিতরের মাপ</span></span>
+      <span class="chip">🥤 <span class="en">Depth of a glass</span><span class="bn">গ্লাসের গভীরতা</span></span>
+      <span class="chip">✏️ <span class="en">Pencil thickness</span><span class="bn">পেন্সিলের ব্যাস</span></span>
+    </div>
+  </div>
+
+  <h3 class="section-title"><span class="en">Interactive labelled diagram — hover or click any part</span><span class="bn">ইন্টারঅ্যাকটিভ চিহ্নিত চিত্র — যেকোনো অংশে হোভার বা ক্লিক করো</span></h3>
+  <div class="split">
+    <div class="split-main"><div id="m1-sim"></div></div>
+    <aside class="info-panel" id="m1-info"></aside>
+  </div>
+  <div class="chip-row" id="m1-chips"></div>
+  <p class="hint"><span class="en">💡 You can also drag the movable jaw in this diagram to see how all parts move together.</span><span class="bn">💡 এই চিত্রে চলমান চোয়াল টেনে দেখো সব অংশ কীভাবে একসাথে নড়ে।</span></p>
+  <div class="complete-row"><button class="btn success" data-complete="m1">✔ <span class="en">Mark module as completed</span><span class="bn">মডিউল সম্পন্ন চিহ্নিত করো</span></button></div>
+</section>
+
+<!-- ================= MODULE 2 ================= -->
+<section class="module" id="m2">
+  <h2 class="module-title"><span class="mnum">2</span><span class="en">Interactive Vernier Calipers Simulator</span><span class="bn">ইন্টারঅ্যাকটিভ ভার্নিয়ার ক্যালিপার্স সিমুলেটর</span></h2>
+
+  <div class="card steps4">
+    <h3><span class="en">How to read in 4 simple steps</span><span class="bn">৪টি সহজ ধাপে পাঠ নেওয়া</span></h3>
+    <ol class="step-flow">
+      <li><b>1</b><span class="en"><strong>MSR:</strong> Find the last main-scale mark just <u>left</u> of the vernier zero.</span><span class="bn"><strong>MSR:</strong> ভার্নিয়ারের শূন্য দাগের ঠিক <u>বামের</u> প্রধান স্কেলের দাগটি পড়ো।</span></li>
+      <li><b>2</b><span class="en"><strong>Coincidence:</strong> Find which vernier line lines up exactly with any main-scale line.</span><span class="bn"><strong>সমাপতন:</strong> ভার্নিয়ারের কোন দাগটি প্রধান স্কেলের কোনো দাগের সাথে হুবহু মিলেছে তা খোঁজো।</span></li>
+      <li><b>3</b><span class="en"><strong>VSR:</strong> Multiply that line number by the least count.</span><span class="bn"><strong>VSR:</strong> ওই দাগের সংখ্যাকে লঘিষ্ঠ গণন দিয়ে গুণ করো।</span></li>
+      <li><b>4</b><span class="en"><strong>Final:</strong> Add MSR and VSR (then correct for zero error).</span><span class="bn"><strong>চূড়ান্ত:</strong> MSR ও VSR যোগ করো (তারপর শূন্য ত্রুটি সংশোধন)।</span></li>
+    </ol>
+  </div>
+
+  <div class="card toolbar">
+    <label class="inline"><span class="en">Experiment</span><span class="bn">পরীক্ষা</span>
+      <select id="m2-scenario">
+        <option value="free">Free play — no object / কোনো বস্তু নেই</option>
+        <option value="external">Outside jaws — cylinder diameter / বেলনের বাইরের ব্যাস</option>
+        <option value="internal">Inside jaws — hollow pipe diameter / ফাঁপা পাইপের ভিতরের ব্যাস</option>
+        <option value="depth">Depth rod — container depth / পাত্রের গভীরতা</option>
+      </select>
+    </label>
+    <button class="btn" id="m2-newobj">🎲 <span class="en">New random object</span><span class="bn">নতুন বস্তু</span></button>
+    <button class="btn" id="m2-reveal">👁 <span class="en">Reveal true size</span><span class="bn">আসল মাপ দেখো</span></button>
+    <span class="truth" id="m2-truth"></span>
+  </div>
+
+  <div id="m2-sim"></div>
+
+  <div class="card">
+    <h3><span class="en">Try these example readings</span><span class="bn">এই উদাহরণগুলো চেষ্টা করো</span></h3>
+    <div class="chip-row" id="m2-examples">
+      <button class="chip btn" data-pos="236">2.36 cm <small>(MSR 2.3, n = 6)</small></button>
+      <button class="chip btn" data-pos="50">0.50 cm <small>(MSR 0.5, n = 0)</small></button>
+      <button class="chip btn" data-pos="187">1.87 cm <small>(MSR 1.8, n = 7)</small></button>
+      <button class="chip btn" data-pos="409">4.09 cm <small>(MSR 4.0, n = 9)</small></button>
+      <button class="chip btn" data-pos="781">7.81 cm <small>(MSR 7.8, n = 1)</small></button>
+    </div>
+    <p class="hint"><span class="en">Every position is a whole number of 0.1 mm steps, so exactly one vernier line always coincides with a main-scale line — just like a real instrument.</span><span class="bn">প্রতিটি অবস্থান ০.১ মি.মি.-এর পূর্ণসংখ্যক ধাপ, তাই ঠিক একটি ভার্নিয়ার দাগ সবসময় প্রধান স্কেলের দাগের সাথে মেলে — বাস্তব যন্ত্রের মতোই।</span></p>
+  </div>
+  <div class="complete-row"><button class="btn success" data-complete="m2">✔ <span class="en">Mark module as completed</span><span class="bn">মডিউল সম্পন্ন চিহ্নিত করো</span></button></div>
+</section>
+
+<!-- ================= MODULE 3 ================= -->
+<section class="module" id="m3">
+  <h2 class="module-title"><span class="mnum">3</span><span class="en">Understanding Least Count</span><span class="bn">লঘিষ্ঠ গণন (Least Count) বোঝা</span></h2>
+
+  <div class="card-grid two">
+    <article class="card">
+      <h3><span class="en">What is least count?</span><span class="bn">লঘিষ্ঠ গণন কী?</span></h3>
+      <p><span class="en">The <b>least count (LC)</b> is the <u>smallest length</u> an instrument can measure accurately. For a ruler it is 1 mm. For a standard Vernier Calipers it is 0.1 mm = <b>0.01 cm</b>.</span><span class="bn"><b>লঘিষ্ঠ গণন (LC)</b> হলো একটি যন্ত্র দিয়ে <u>সবচেয়ে ছোট যে দৈর্ঘ্য</u> নির্ভুলভাবে মাপা যায়। সাধারণ স্কেলের জন্য এটি ১ মি.মি.; আদর্শ ভার্নিয়ার ক্যালিপার্সের জন্য ০.১ মি.মি. = <b>০.০১ সে.মি.</b>।</span></p>
+    </article>
+    <article class="card">
+      <h3><span class="en">Why is it important?</span><span class="bn">কেন গুরুত্বপূর্ণ?</span></h3>
+      <p><span class="en">The smaller the least count, the more accurate the instrument. It also tells us how many decimal places a reading may have — an LC of 0.01 cm means we write readings like 2.36 cm (two decimals), never 2.3 or 2.360.</span><span class="bn">লঘিষ্ঠ গণন যত ছোট, যন্ত্র তত নির্ভুল। এটি আরও বলে দেয় পাঠে কয় ঘর দশমিক লিখব — LC ০.০১ সে.মি. হলে পাঠ হবে ২.৩৬ সে.মি. (দুই ঘর দশমিক)।</span></p>
+    </article>
+  </div>
+
+  <div class="card">
+    <h3><span class="en">The idea behind the formula</span><span class="bn">সূত্রের পেছনের ধারণা</span></h3>
+    <p><span class="en">The vernier scale is made slightly <b>shorter</b> than the main scale: <b>10 vernier divisions (VSD) = 9 main-scale divisions (MSD)</b>. So each VSD is a little shorter than one MSD. The difference is the least count.</span><span class="bn">ভার্নিয়ার স্কেলকে প্রধান স্কেলের চেয়ে একটু <b>ছোট</b> করে বানানো হয়: <b>১০ ভার্নিয়ার ভাগ (VSD) = ৯ প্রধান স্কেল ভাগ (MSD)</b>। তাই প্রতিটি VSD একটি MSD-এর চেয়ে সামান্য ছোট। এই পার্থক্যই লঘিষ্ঠ গণন।</span></p>
+    <div class="derive">
+      <div>10 VSD = 9 MSD</div>
+      <div>1 VSD = 0.9 MSD</div>
+      <div>LC = 1 MSD − 1 VSD = 1 MSD − 0.9 MSD = <b>0.1 MSD</b></div>
+      <div>1 MSD = 1 mm ⇒ LC = 0.1 mm = <b>0.01 cm</b></div>
+    </div>
+    <div class="formula-big">Least Count = <span>Value of 1 MSD</span> ÷ <span>Number of vernier divisions (N)</span></div>
+  </div>
+
+  <div class="card">
+    <h3><span class="en">Interactive Least Count Lab</span><span class="bn">লঘিষ্ঠ গণন পরীক্ষাগার</span></h3>
+    <div class="form-grid">
+      <label><span class="en">Length of 1 main-scale division (mm)</span><span class="bn">১ প্রধান স্কেল ভাগের দৈর্ঘ্য (মি.মি.)</span><input id="lc-msd" type="number" step="0.01" min="0.01" max="10" value="1"></label>
+      <label><span class="en">Vernier divisions, N</span><span class="bn">ভার্নিয়ার ভাগ সংখ্যা, N</span><input id="lc-n" type="number" step="1" min="2" max="60" value="10"></label>
+      <label><span class="en">Main-scale divisions equal to N VSD, M</span><span class="bn">N টি VSD = কয়টি MSD, M</span><input id="lc-m" type="number" step="1" min="1" max="59" value="9"></label>
+    </div>
+    <div class="chip-row" id="lc-presets">
+      <button class="chip btn" data-msd="1" data-n="10" data-m="9">10 VSD = 9 MSD</button>
+      <button class="chip btn" data-msd="1" data-n="20" data-m="19">20 VSD = 19 MSD</button>
+      <button class="chip btn" data-msd="1" data-n="50" data-m="49">50 VSD = 49 MSD</button>
+      <button class="chip btn" data-msd="0.5" data-n="25" data-m="24">1 MSD = 0.5 mm, 25 VSD = 24 MSD</button>
+    </div>
+    <div id="lc-error" class="msg error" hidden></div>
+    <div id="lc-steps" class="solution"></div>
+    <div class="lens-box">
+      <div class="lens-head"><span class="en">Magnified scale — slide the vernier</span><span class="bn">বিবর্ধিত স্কেল — ভার্নিয়ার সরাও</span></div>
+      <svg id="lc-lens" class="lens-svg" viewBox="0 0 800 230" role="img" aria-label="Least count demonstration"></svg>
+      <label class="slider-row"><span class="en">Vernier shift</span><span class="bn">ভার্নিয়ার সরানো</span><input type="range" id="lc-shift" min="0" max="10" step="1" value="3"><output id="lc-shift-out"></output></label>
+    </div>
+    <div class="table-wrap"><table class="cmp" id="lc-table"></table></div>
+  </div>
+  <div class="complete-row"><button class="btn success" data-complete="m3">✔ <span class="en">Mark module as completed</span><span class="bn">মডিউল সম্পন্ন চিহ্নিত করো</span></button></div>
+</section>
+
+<!-- ================= MODULE 4 ================= -->
+<section class="module" id="m4">
+  <h2 class="module-title"><span class="mnum">4</span><span class="en">Zero Error and Zero Correction</span><span class="bn">শূন্য ত্রুটি ও শূন্য সংশোধন</span></h2>
+
+  <div class="card">
+    <h3><span class="en">What is zero error?</span><span class="bn">শূন্য ত্রুটি কী?</span></h3>
+    <p><span class="en">Close the jaws completely. A perfect instrument reads <b>0.00 cm</b> — the vernier zero sits exactly on the main-scale zero. If it does not, the instrument has a <b>zero error</b>. Every reading you take will be wrong by that same amount, so we must correct it.</span><span class="bn">চোয়াল পুরোপুরি বন্ধ করো। নিখুঁত যন্ত্রে পাঠ হবে <b>০.০০ সে.মি.</b> — ভার্নিয়ারের শূন্য ঠিক প্রধান স্কেলের শূন্যের উপর থাকবে। না থাকলে যন্ত্রে <b>শূন্য ত্রুটি</b> আছে। তখন প্রতিটি পাঠই একই পরিমাণ ভুল হবে, তাই সংশোধন করতে হবে।</span></p>
+  </div>
+
+  <div class="card-grid three">
+    <article class="card zcard pos">
+      <h3>➕ <span class="en">Positive zero error</span><span class="bn">ধনাত্মক শূন্য ত্রুটি</span></h3>
+      <p><span class="en">Jaws closed, vernier zero is to the <b>right</b> of the main zero. The n-th vernier line coincides. <br><b>ZE = + n × LC</b></span><span class="bn">চোয়াল বন্ধ, ভার্নিয়ারের শূন্য প্রধান শূন্যের <b>ডানে</b>। n-তম ভার্নিয়ার দাগ মিলে যায়। <br><b>ZE = + n × LC</b></span></p>
+    </article>
+    <article class="card zcard neg">
+      <h3>➖ <span class="en">Negative zero error</span><span class="bn">ঋণাত্মক শূন্য ত্রুটি</span></h3>
+      <p><span class="en">Jaws closed, vernier zero is to the <b>left</b> of the main zero. The n-th line coincides. <br><b>ZE = − (N − n) × LC</b></span><span class="bn">চোয়াল বন্ধ, ভার্নিয়ারের শূন্য প্রধান শূন্যের <b>বামে</b>। n-তম দাগ মিলে যায়। <br><b>ZE = − (N − n) × LC</b></span></p>
+    </article>
+    <article class="card zcard fix">
+      <h3>🛠 <span class="en">Zero correction</span><span class="bn">শূন্য সংশোধন</span></h3>
+      <p><span class="en">The amount we <b>add</b> to fix the reading. It has the same size but the <u>opposite sign</u>:<br><b>ZC = − ZE</b></span><span class="bn">পাঠ ঠিক করতে যে মান <b>যোগ</b> করি। মান একই, কিন্তু <u>চিহ্ন উল্টো</u>:<br><b>ZC = − ZE</b></span></p>
+    </article>
+  </div>
+
+  <div class="card">
+    <h3><span class="en">Interactive zero-error simulator (jaws are closed)</span><span class="bn">শূন্য ত্রুটি সিমুলেটর (চোয়াল বন্ধ)</span></h3>
+    <p class="hint"><span class="en">Move the slider to shift the vernier zero relative to the main zero. One step = 0.1 mm = 0.01 cm.</span><span class="bn">স্লাইডার সরিয়ে ভার্নিয়ারের শূন্যকে প্রধান শূন্যের সাপেক্ষে সরাও। ১ ধাপ = ০.১ মি.মি. = ০.০১ সে.মি.।</span></p>
+    <div id="ze-sim"></div>
+    <div class="slider-row big">
+      <span class="en">Vernier zero position</span><span class="bn">ভার্নিয়ার শূন্যের অবস্থান</span>
+      <input type="range" id="ze-slider" min="-9" max="9" step="1" value="3">
+      <output id="ze-slider-out"></output>
+    </div>
+    <div class="chip-row" id="ze-presets">
+      <button class="chip btn" data-ze="0">No error / ত্রুটি নেই</button>
+      <button class="chip btn" data-ze="3">+0.03 cm</button>
+      <button class="chip btn" data-ze="6">+0.06 cm</button>
+      <button class="chip btn" data-ze="-3">−0.03 cm</button>
+      <button class="chip btn" data-ze="-7">−0.07 cm</button>
+      <button class="chip btn" id="ze-anim">▶ <span class="en">Animate sweep</span><span class="bn">অ্যানিমেশন</span></button>
+    </div>
+    <div id="ze-info" class="solution"></div>
+  </div>
+
+  <div class="card">
+    <h3><span class="en">Correct a measured reading</span><span class="bn">পাঠ সংশোধন করো</span></h3>
+    <div class="form-grid">
+      <label><span class="en">Observed reading (cm)</span><span class="bn">পর্যবেক্ষিত পাঠ (সে.মি.)</span><input id="ze-obs" type="number" step="0.01" value="2.36"></label>
+    </div>
+    <div id="ze-calc" class="solution"></div>
+    <div class="formula-big">Correct Reading = Observed Reading − Zero Error</div>
+  </div>
+
+  <div class="card">
+    <h3><span class="en">How to identify zero error</span><span class="bn">শূন্য ত্রুটি কীভাবে চেনা যায়</span></h3>
+    <ol class="steps-list">
+      <li><span class="en">Close the jaws gently (do not squeeze).</span><span class="bn">চোয়াল আস্তে বন্ধ করো (জোরে চাপবে না)।</span></li>
+      <li><span class="en">Look at the vernier zero and the main zero.</span><span class="bn">ভার্নিয়ারের শূন্য ও প্রধান শূন্য দেখো।</span></li>
+      <li><span class="en">Same place → no error. Vernier zero on the right → positive. On the left → negative.</span><span class="bn">একই জায়গায় → ত্রুটি নেই। ডানে → ধনাত্মক। বামে → ঋণাত্মক।</span></li>
+      <li><span class="en">Find the coinciding vernier line n and use the matching formula.</span><span class="bn">মিলে যাওয়া ভার্নিয়ার দাগ n খুঁজে সংশ্লিষ্ট সূত্র ব্যবহার করো।</span></li>
+    </ol>
+    <div class="note"><span class="en"><b>Remember:</b> Zero <u>error</u> is what the instrument wrongly shows. Zero <u>correction</u> is what we do to fix it. <b>ZC = −ZE</b>.</span><span class="bn"><b>মনে রাখো:</b> শূন্য <u>ত্রুটি</u> হলো যন্ত্র যে ভুল মান দেখায়। শূন্য <u>সংশোধন</u> হলো তা ঠিক করার জন্য যা করি। <b>ZC = −ZE</b>।</span></div>
+  </div>
+  <div class="complete-row"><button class="btn success" data-complete="m4">✔ <span class="en">Mark module as completed</span><span class="bn">মডিউল সম্পন্ন চিহ্নিত করো</span></button></div>
+</section>
+
+<!-- ================= MODULE 5 ================= -->
+<section class="module" id="m5">
+  <h2 class="module-title"><span class="mnum">5</span><span class="en">Measurement Practice Laboratory</span><span class="bn">পরিমাপ অনুশীলন ল্যাব</span></h2>
+
+  <div class="card toolbar">
+    <label class="inline"><span class="en">Object</span><span class="bn">বস্তু</span>
+      <select id="pr-object"></select>
+    </label>
+    <label class="inline"><span class="en">Measure</span><span class="bn">কী মাপবে</span>
+      <select id="pr-measure"></select>
+    </label>
+    <label class="check"><input type="checkbox" id="pr-ze-toggle"> <span class="en">Faulty instrument (zero error)</span><span class="bn">ত্রুটিযুক্ত যন্ত্র (শূন্য ত্রুটি)</span></label>
+    <button class="btn primary" id="pr-new">🎲 <span class="en">Random challenge</span><span class="bn">এলোমেলো চ্যালেঞ্জ</span></button>
+  </div>
+  <div class="card task-card" id="pr-task"></div>
+  <div id="pr-sim"></div>
+
+  <div class="card">
+    <h3><span class="en">Your answer sheet</span><span class="bn">তোমার উত্তরপত্র</span></h3>
+    <div class="form-grid four">
+      <label><span class="en">MSR (cm)</span><span class="bn">MSR (সে.মি.)</span><input id="pr-msr" type="number" step="0.1" placeholder="e.g. 2.3"></label>
+      <label><span class="en">Coinciding division, n</span><span class="bn">সমাপতিত ভাগ, n</span><input id="pr-n" type="number" step="1" min="0" max="10" placeholder="0–10"></label>
+      <label><span class="en">Least count (cm)</span><span class="bn">লঘিষ্ঠ গণন (সে.মি.)</span><input id="pr-lc" type="number" step="0.001" value="0.01"></label>
+      <label><span class="en">Zero error (cm, signed)</span><span class="bn">শূন্য ত্রুটি (সে.মি., চিহ্নসহ)</span><input id="pr-ze" type="number" step="0.01" value="0"></label>
+    </div>
+    <div class="btn-row">
+      <button class="btn primary" id="pr-submit">✔ <span class="en">Submit measurement</span><span class="bn">পরিমাপ জমা দাও</span></button>
+      <button class="btn" id="pr-zerocheck">🔎 <span class="en">Check zero reading</span><span class="bn">শূন্য পাঠ পরীক্ষা</span></button>
+      <label class="check"><input type="checkbox" id="pr-hint"> <span class="en">Show live reading (hint)</span><span class="bn">লাইভ পাঠ দেখাও (সাহায্য)</span></label>
+    </div>
+    <div id="pr-zero-box" class="lens-box" hidden>
+      <div class="lens-head"><span class="en">Jaws closed (object removed) — read the zero error here</span><span class="bn">চোয়াল বন্ধ (বস্তু সরানো) — এখানে শূন্য ত্রুটি দেখো</span></div>
+      <svg id="pr-zero-lens" class="lens-svg" viewBox="0 0 800 230"></svg>
+    </div>
+    <div id="pr-result" class="solution"></div>
+  </div>
+  <div class="card"><h3><span class="en">Practice performance</span><span class="bn">অনুশীলনের ফলাফল</span></h3><div id="pr-stats" class="stat-row"></div></div>
+  <div class="complete-row"><button class="btn success" data-complete="m5">✔ <span class="en">Mark module as completed</span><span class="bn">মডিউল সম্পন্ন চিহ্নিত করো</span></button></div>
+</section>
+
+<!-- ================= MODULE 6 ================= -->
+<section class="module" id="m6">
+  <h2 class="module-title"><span class="mnum">6</span><span class="en">SSC Examination Preparation</span><span class="bn">এসএসসি পরীক্ষার প্রস্তুতি</span></h2>
+  <div class="tabs" id="m6-tabs">
+    <button class="tab active" data-tab="quiz">🎯 <span class="en">Quiz</span><span class="bn">কুইজ</span></button>
+    <button class="tab" data-tab="bank">📚 <span class="en">Question bank</span><span class="bn">প্রশ্নব্যাংক</span></button>
+  </div>
+  <div id="tab-quiz" class="tabpane">
+    <div class="card" id="quiz-setup"></div>
+    <div id="quiz-box"></div>
+  </div>
+  <div id="tab-bank" class="tabpane" hidden>
+    <div class="card toolbar">
+      <label class="inline"><span class="en">Type</span><span class="bn">ধরন</span>
+        <select id="bank-type">
+          <option value="all">All / সব</option>
+          <option value="mcq">MCQ / বহুনির্বাচনি</option>
+          <option value="numerical">Numerical / গাণিতিক</option>
+          <option value="conceptual">Conceptual / ধারণাভিত্তিক</option>
+          <option value="short">Short / সংক্ষিপ্ত</option>
+          <option value="board">Board-style / বোর্ড প্রশ্ন</option>
+          <option value="practical">Practical / ব্যবহারিক</option>
+        </select>
+      </label>
+      <label class="inline"><span class="en">Topic</span><span class="bn">বিষয়</span>
+        <select id="bank-topic"></select>
+      </label>
+      <button class="btn" id="bank-toggle">👁 <span class="en">Show / hide all answers</span><span class="bn">সব উত্তর দেখাও / লুকাও</span></button>
+      <span id="bank-count" class="truth"></span>
+    </div>
+    <div id="bank-list"></div>
+  </div>
+  <div class="complete-row"><button class="btn success" data-complete="m6">✔ <span class="en">Mark module as completed</span><span class="bn">মডিউল সম্পন্ন চিহ্নিত করো</span></button></div>
+</section>
+
+<!-- ================= MODULE 7 ================= -->
+<section class="module" id="m7">
+  <h2 class="module-title"><span class="mnum">7</span><span class="en">Step-by-Step Solution Solver</span><span class="bn">ধাপে ধাপে সমাধানকারী</span></h2>
+  <div class="card">
+    <div class="form-grid four">
+      <label><span class="en">Main scale reading, MSR (cm)</span><span class="bn">প্রধান স্কেল পাঠ, MSR (সে.মি.)</span><input id="sv-msr" type="number" step="0.01" value="2.3"></label>
+      <label><span class="en">Coinciding vernier division, n</span><span class="bn">সমাপতিত ভার্নিয়ার ভাগ, n</span><input id="sv-n" type="number" step="1" value="6"></label>
+      <label><span class="en">Least count, LC (cm)</span><span class="bn">লঘিষ্ঠ গণন, LC (সে.মি.)</span><input id="sv-lc" type="number" step="0.0001" value="0.01"></label>
+      <label><span class="en">Zero error (cm, signed)</span><span class="bn">শূন্য ত্রুটি (সে.মি., চিহ্নসহ)</span><input id="sv-ze" type="number" step="0.01" value="0"></label>
+    </div>
+    <details class="adv"><summary><span class="en">Advanced: value of 1 MSD</span><span class="bn">উন্নত: ১ MSD-এর মান</span></summary>
+      <div class="form-grid"><label><span class="en">1 MSD (cm) — default 0.1 cm = 1 mm</span><span class="bn">১ MSD (সে.মি.) — ডিফল্ট ০.১ সে.মি. = ১ মি.মি.</span><input id="sv-msd" type="number" step="0.01" value="0.1"></label></div>
+    </details>
+    <div class="btn-row">
+      <button class="btn primary" id="sv-go">▶ <span class="en">Solve step by step</span><span class="bn">ধাপে ধাপে সমাধান</span></button>
+      <button class="btn" id="sv-random">🎲 <span class="en">Random example</span><span class="bn">এলোমেলো উদাহরণ</span></button>
+      <button class="btn" id="sv-ex1">Ex 1: +ZE</button>
+      <button class="btn" id="sv-ex2">Ex 2: −ZE</button>
+      <button class="btn ghost" id="sv-clear">↺ <span class="en">Reset</span><span class="bn">রিসেট</span></button>
+    </div>
+    <div id="sv-error" class="msg error" hidden></div>
+  </div>
+  <div id="sv-steps" class="steps-visual"></div>
+  <div class="lens-box" id="sv-lens-box" hidden>
+    <div class="lens-head"><span class="en">What the scales look like for these values</span><span class="bn">এই মানগুলোর জন্য স্কেল যেমন দেখায়</span></div>
+    <svg id="sv-lens" class="lens-svg" viewBox="0 0 800 230"></svg>
+  </div>
+  <div class="complete-row"><button class="btn success" data-complete="m7">✔ <span class="en">Mark module as completed</span><span class="bn">মডিউল সম্পন্ন চিহ্নিত করো</span></button></div>
+</section>
+
+<!-- ================= MODULE 8 ================= -->
+<section class="module" id="m8">
+  <h2 class="module-title"><span class="mnum">8</span><span class="en">Teacher Mode</span><span class="bn">শিক্ষক মোড</span></h2>
+  <div class="card toolbar sticky-tools">
+    <button class="btn primary" id="tm-gen">🎲 <span class="en">New random problem</span><span class="bn">নতুন সমস্যা</span></button>
+    <label class="check"><input type="checkbox" id="tm-ze"> <span class="en">Include zero error</span><span class="bn">শূন্য ত্রুটি যুক্ত করো</span></label>
+    <button class="btn" id="tm-next">⏭ <span class="en">Reveal next step</span><span class="bn">পরের ধাপ দেখাও</span></button>
+    <button class="btn" id="tm-all">👁 <span class="en">Reveal all</span><span class="bn">সব দেখাও</span></button>
+    <button class="btn" id="tm-hide">🙈 <span class="en">Hide answers</span><span class="bn">উত্তর লুকাও</span></button>
+    <label class="check"><input type="checkbox" id="tm-hl-main"> <span class="en">Highlight main scale</span><span class="bn">প্রধান স্কেল হাইলাইট</span></label>
+    <label class="check"><input type="checkbox" id="tm-hl-ver"> <span class="en">Highlight vernier scale</span><span class="bn">ভার্নিয়ার স্কেল হাইলাইট</span></label>
+    <label class="check"><input type="checkbox" id="tm-auto" checked> <span class="en">Auto-highlight per step</span><span class="bn">ধাপ অনুযায়ী হাইলাইট</span></label>
+    <div class="seg small" role="group"><button data-lang="en">EN</button><button data-lang="bn">বাংলা</button><button data-lang="both">EN+বাংলা</button></div>
+    <button class="btn" id="tm-fs">⛶ <span class="en">Fullscreen teaching</span><span class="bn">ফুলস্ক্রিন পাঠদান</span></button>
+    <button class="btn ghost" id="tm-reset">↺ <span class="en">Reset all</span><span class="bn">সব রিসেট</span></button>
+  </div>
+  <div class="card problem-banner" id="tm-problem"></div>
+  <div id="tm-sim"></div>
+  <div class="formula-giant" id="tm-formula"></div>
+  <div class="board" id="tm-board"></div>
+  <div class="complete-row"><button class="btn success" data-complete="m8">✔ <span class="en">Mark module as completed</span><span class="bn">মডিউল সম্পন্ন চিহ্নিত করো</span></button></div>
+</section>
+
+<!-- ================= MODULE 9 ================= -->
+<section class="module" id="m9">
+  <h2 class="module-title"><span class="mnum">9</span><span class="en">Formula Cheat Sheet</span><span class="bn">সূত্র তালিকা</span></h2>
+  <div class="card-grid two" id="cheat-grid">
+    <article class="card formula-card"><h4><span class="en">Least Count</span><span class="bn">লঘিষ্ঠ গণন</span></h4><code>LC = Value of 1 MSD ÷ N</code><p><span class="en">When N VSD = (N − 1) MSD. For 1 MSD = 1 mm, N = 10: LC = 0.1 mm = 0.01 cm.</span><span class="bn">যখন N VSD = (N − 1) MSD। ১ MSD = ১ মি.মি., N = ১০ হলে LC = ০.১ মি.মি. = ০.০১ সে.মি.।</span></p><button class="copy" data-copy="LC = Value of 1 MSD / N">📋 Copy</button></article>
+    <article class="card formula-card"><h4><span class="en">Value of 1 VSD</span><span class="bn">১ VSD-এর মান</span></h4><code>1 VSD = (N − 1)/N × 1 MSD</code><p><span class="en">10 VSD = 9 MSD ⇒ 1 VSD = 0.9 MSD.</span><span class="bn">১০ VSD = ৯ MSD ⇒ ১ VSD = ০.৯ MSD।</span></p><button class="copy" data-copy="1 VSD = (N - 1)/N x 1 MSD">📋 Copy</button></article>
+    <article class="card formula-card"><h4><span class="en">Vernier Scale Reading</span><span class="bn">ভার্নিয়ার স্কেল পাঠ</span></h4><code>VSR = n × LC</code><p><span class="en">n = number of the vernier line that coincides with a main-scale line.</span><span class="bn">n = যে ভার্নিয়ার দাগ প্রধান স্কেলের দাগের সাথে মেলে তার সংখ্যা।</span></p><button class="copy" data-copy="VSR = n x LC">📋 Copy</button></article>
+    <article class="card formula-card"><h4><span class="en">Observed (Final) Reading</span><span class="bn">পর্যবেক্ষিত পাঠ</span></h4><code>Reading = MSR + (n × LC)</code><p><span class="en">MSR = main-scale mark just left of the vernier zero.</span><span class="bn">MSR = ভার্নিয়ার শূন্যের ঠিক বামের প্রধান স্কেলের দাগ।</span></p><button class="copy" data-copy="Final Reading = MSR + (n x LC)">📋 Copy</button></article>
+    <article class="card formula-card"><h4><span class="en">Positive zero error</span><span class="bn">ধনাত্মক শূন্য ত্রুটি</span></h4><code>ZE = + n × LC</code><p><span class="en">Vernier zero to the right of main zero (jaws closed).</span><span class="bn">চোয়াল বন্ধ অবস্থায় ভার্নিয়ার শূন্য ডানে।</span></p><button class="copy" data-copy="Positive ZE = + n x LC">📋 Copy</button></article>
+    <article class="card formula-card"><h4><span class="en">Negative zero error</span><span class="bn">ঋণাত্মক শূন্য ত্রুটি</span></h4><code>ZE = − (N − n) × LC</code><p><span class="en">Vernier zero to the left of main zero (jaws closed).</span><span class="bn">চোয়াল বন্ধ অবস্থায় ভার্নিয়ার শূন্য বামে।</span></p><button class="copy" data-copy="Negative ZE = -(N - n) x LC">📋 Copy</button></article>
+    <article class="card formula-card"><h4><span class="en">Zero correction</span><span class="bn">শূন্য সংশোধন</span></h4><code>ZC = − ZE</code><p><span class="en">Same size, opposite sign.</span><span class="bn">মান একই, চিহ্ন উল্টো।</span></p><button class="copy" data-copy="Zero correction = - Zero error">📋 Copy</button></article>
+    <article class="card formula-card"><h4><span class="en">Correct reading</span><span class="bn">সঠিক পাঠ</span></h4><code>Correct = Observed − ZE</code><p><span class="en">Same as Observed + ZC.</span><span class="bn">অর্থাৎ Observed + ZC।</span></p><button class="copy" data-copy="Correct Reading = Observed Reading - Zero Error">📋 Copy</button></article>
+    <article class="card formula-card"><h4><span class="en">Mean of readings</span><span class="bn">গড় পাঠ</span></h4><code>Mean = (r₁ + r₂ + … + rₖ) ÷ k</code><p><span class="en">Take 3 readings at different places and average.</span><span class="bn">ভিন্ন ভিন্ন জায়গায় ৩টি পাঠ নিয়ে গড় করো।</span></p><button class="copy" data-copy="Mean = (r1 + r2 + ... + rk) / k">📋 Copy</button></article>
+    <article class="card formula-card"><h4><span class="en">Cylinder volume</span><span class="bn">বেলনের আয়তন</span></h4><code>V = π r² h , r = d ÷ 2</code><p><span class="en">Use the corrected diameter d.</span><span class="bn">সংশোধিত ব্যাস d ব্যবহার করো।</span></p><button class="copy" data-copy="V = pi r^2 h, r = d/2">📋 Copy</button></article>
+    <article class="card formula-card"><h4><span class="en">Percentage error</span><span class="bn">শতকরা ত্রুটি</span></h4><code>% error = |measured − true| ÷ true × 100</code><p><span class="en">Used in Module 5 accuracy.</span><span class="bn">মডিউল ৫-এর নির্ভুলতায় ব্যবহৃত।</span></p><button class="copy" data-copy="% error = |measured - true| / true x 100">📋 Copy</button></article>
+    <article class="card formula-card"><h4><span class="en">Units</span><span class="bn">একক</span></h4><code>1 cm = 10 mm · 1 mm = 0.1 cm · 0.01 cm = 0.1 mm</code><p><span class="en">Vernier readings are written in cm with 2 decimals.</span><span class="bn">ভার্নিয়ার পাঠ সে.মি.-এ ২ দশমিক ঘরে লেখা হয়।</span></p><button class="copy" data-copy="1 cm = 10 mm; 1 mm = 0.1 cm; 0.01 cm = 0.1 mm">📋 Copy</button></article>
+  </div>
+  <div class="card-grid two">
+    <article class="card">
+      <h3><span class="en">Key definitions</span><span class="bn">গুরুত্বপূর্ণ সংজ্ঞা</span></h3>
+      <ul class="tick-list">
+        <li><span class="en"><b>MSD</b> – one division of the main scale (1 mm).</span><span class="bn"><b>MSD</b> – প্রধান স্কেলের একটি ভাগ (১ মি.মি.)।</span></li>
+        <li><span class="en"><b>VSD</b> – one division of the vernier scale (0.9 mm).</span><span class="bn"><b>VSD</b> – ভার্নিয়ার স্কেলের একটি ভাগ (০.৯ মি.মি.)।</span></li>
+        <li><span class="en"><b>Least count</b> – smallest length measurable accurately.</span><span class="bn"><b>লঘিষ্ঠ গণন</b> – নির্ভুলভাবে মাপা যায় এমন ক্ষুদ্রতম দৈর্ঘ্য।</span></li>
+        <li><span class="en"><b>Zero error</b> – reading shown when jaws are fully closed.</span><span class="bn"><b>শূন্য ত্রুটি</b> – চোয়াল বন্ধ করলে যন্ত্র যে পাঠ দেখায়।</span></li>
+        <li><span class="en"><b>Vernier constant</b> – another name for least count.</span><span class="bn"><b>ভার্নিয়ার ধ্রুবক</b> – লঘিষ্ঠ গণনের আরেক নাম।</span></li>
+      </ul>
+    </article>
+    <article class="card">
+      <h3><span class="en">Measurement rules</span><span class="bn">পরিমাপের নিয়ম</span></h3>
+      <ul class="tick-list">
+        <li><span class="en">Always check zero error first.</span><span class="bn">আগে শূন্য ত্রুটি দেখে নাও।</span></li>
+        <li><span class="en">Grip the object gently — never force the jaws.</span><span class="bn">বস্তুকে আলতো করে ধরো — জোর করবে না।</span></li>
+        <li><span class="en">Look straight at the scale to avoid parallax.</span><span class="bn">লম্বভাবে তাকাও, যেন লম্বন ত্রুটি না হয়।</span></li>
+        <li><span class="en">Tighten the locking screw before reading.</span><span class="bn">পাঠ নেওয়ার আগে লকিং স্ক্রু আটকাও।</span></li>
+        <li><span class="en">Take at least 3 readings and find the mean.</span><span class="bn">কমপক্ষে ৩টি পাঠ নিয়ে গড় করো।</span></li>
+        <li><span class="en">Always write the unit (cm) and 2 decimals.</span><span class="bn">সবসময় একক (সে.মি.) ও ২ দশমিক ঘর লেখো।</span></li>
+      </ul>
+    </article>
+  </div>
+  <div class="complete-row"><button class="btn success" data-complete="m9">✔ <span class="en">Mark module as completed</span><span class="bn">মডিউল সম্পন্ন চিহ্নিত করো</span></button></div>
+</section>
+
+<!-- ================= MODULE 10 ================= -->
+<section class="module" id="m10">
+  <h2 class="module-title"><span class="mnum">10</span><span class="en">Learning Progress</span><span class="bn">শেখার অগ্রগতি</span></h2>
+  <div class="stat-row" id="pg-summary"></div>
+  <div class="card-grid two">
+    <article class="card"><h3><span class="en">Completed modules</span><span class="bn">সম্পন্ন মডিউল</span></h3><div id="pg-modules"></div></article>
+    <article class="card"><h3><span class="en">Quiz scores (last 10)</span><span class="bn">কুইজ স্কোর (শেষ ১০টি)</span></h3><div id="pg-quiz"></div></article>
+    <article class="card"><h3><span class="en">Correct vs incorrect answers</span><span class="bn">সঠিক বনাম ভুল উত্তর</span></h3><div id="pg-ci"></div></article>
+    <article class="card"><h3><span class="en">Practice performance</span><span class="bn">অনুশীলনের ফলাফল</span></h3><div id="pg-practice"></div></article>
+  </div>
+  <div class="complete-row"><button class="btn danger" id="pg-reset">🗑 <span class="en">Reset all progress</span><span class="bn">সব অগ্রগতি মুছে ফেলো</span></button></div>
+</section>
+
+</main>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="slide_Calirpus.js"></script>
+</body>
+</html>
