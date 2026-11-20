@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Spring Virtual Physics Lab | Nahid Hasan Educare</title><link rel="stylesheet" href="spring.css"></head>
+<body>
+<header><h1>NAHID HASAN EDUCARE</h1><p>Interactive Physics Laboratory · Spring and Hooke's Law · SSC Physics</p>
+<button id="full" class="ghost">Teacher: Fullscreen</button></header>
+<nav><button data-t="intro" class="on">পরিচিতি</button><button data-t="sim">সিমুলেশন</button><button data-t="graph">গ্রাফ</button><button data-t="exp">পরীক্ষণ</button><button data-t="combo">সিরিজ/প্যারালাল</button><button data-t="quiz">অনুশীলনী</button><button data-t="teach">শিক্ষক</button><button data-t="rev">রিভিশন</button></nav>
+<main>
+<section id="intro"><h2>স্প্রিং পরিচিতি</h2>
+<svg id="isvg" viewBox="0 0 320 330" class="fig"><rect data-i="sup" x="80" y="10" width="160" height="14" fill="#12285a"/><path data-i="coil" d="M160 24V40L180 52L140 70L180 88L140 106L180 124L140 142L180 160L140 178L180 196L140 214L160 226V250" fill="none" stroke="#0ea5c6" stroke-width="5" stroke-linejoin="round"/><rect data-i="mass" x="130" y="250" width="60" height="40" rx="4" fill="#f08a24"/><text x="160" y="276" text-anchor="middle" fill="#fff" font-size="14">m</text><text x="250" y="20" font-size="12">Fixed support</text><text x="195" y="140" font-size="12">Spring</text><text x="198" y="275" font-size="12">Mass</text></svg>
+<div id="info" class="note">চিত্রের অংশে ক্লিক করুন।</div>
+<dl>
+<dt>Spring</dt><dd>স্থিতিস্থাপক তার দিয়ে প্যাঁচানো বস্তু, যা বল দিলে বিকৃত হয়ে বল সরালে আগের আকারে ফেরে।</dd>
+<dt>Elasticity</dt><dd>বাহ্যিক বল সরালে বস্তুর পূর্বের আকার ফিরে পাওয়ার ধর্ম।</dd>
+<dt>Deformation</dt><dd>বল প্রয়োগে বস্তুর আকার বা আকৃতির পরিবর্তন।</dd>
+<dt>Extension / Compression</dt><dd>স্প্রিং লম্বা হলে প্রসারণ (x = L − L₀); ছোট হলে সংকোচন।</dd>
+<dt>Restoring force</dt><dd>স্প্রিং আগের অবস্থায় ফিরতে যে বল দেয়; এটি প্রযুক্ত বলের বিপরীত ও সমান (স্থির অবস্থায়)।</dd>
+<dt>Spring constant (k)</dt><dd>১ m প্রসারণে যত নিউটন বল লাগে; একক N/m। k বেশি = স্প্রিং শক্ত।</dd>
+<dt>Hooke's Law</dt><dd>স্থিতিস্থাপক সীমার মধ্যে প্রসারণ প্রযুক্ত বলের সমানুপাতিক: <b>F ∝ x, F = kx</b>।</dd></dl></section>
+
+<section id="sim" hidden><h2>ইন্টারঅ্যাকটিভ সিমুলেশন ও হুকের সূত্র</h2>
+<div class="grid"><svg id="ssvg" viewBox="0 0 360 440" class="fig"></svg>
+<div class="panel">
+<label>ভর m: <b id="mv"></b> kg<input id="m" type="range" min="0" max="1.2" step="0.1" value="0"></label>
+<label>প্রাথমিক দৈর্ঘ্য L₀: <b id="lv"></b> cm<input id="L0" type="range" min="10" max="20" step="1" value="15"></label>
+<label>স্প্রিং <select id="sp"><option value="40">A (k=40 N/m)</option><option value="80">B (k=80 N/m)</option></select></label>
+<label>g <select id="g"><option value="9.8">9.8 m/s²</option><option value="10">10 m/s² (সরলীকৃত)</option></select></label>
+<div class="row"><button id="add">+0.1 kg</button><button id="rem">ভর সরাও</button><button id="pp">Pause</button><button id="rst">Reset</button><button id="rec" class="hot">গ্রাফে বিন্দু যোগ</button></div>
+<table class="vals"><tr><td>Mass</td><td id="o1"></td></tr><tr><td>g</td><td id="o2"></td></tr><tr><td>W = mg</td><td id="o3"></td></tr><tr><td>L₀</td><td id="o4"></td></tr><tr><td>L (final)</td><td id="o5"></td></tr><tr><td>x = L − L₀</td><td id="o6"></td></tr><tr><td>k = F/x</td><td id="o7"></td></tr></table>
+<div id="stat" class="note"></div>
+<label><input type="checkbox" id="fshow" checked> সূত্র দেখাও</label><div id="formula" class="formula">F = kx &nbsp;|&nbsp; F ∝ x<br>F = বল (N), k = স্প্রিং ধ্রুবক (N/m), x = প্রসারণ (m)</div>
+<p class="small">স্থিতিস্থাপক সীমা: F > k×0.25 m হলে (সরল চিত্র) স্প্রিং বেশি লম্বা হয়, F = kx আর খাটে না। বাস্তব বস্তুতে সীমা ভিন্ন। ভর বদলালে স্প্রিং প্রথমে দোলে (oscillation), পরে স্থির ভারসাম্যে আসে; মাপ নিতে স্থির হওয়ার পর পড়ুন।</p>
+</div></div></section>
+
+<section id="graph" hidden><h2>বল বনাম প্রসারণ গ্রাফ</h2>
+<p>সিমুলেশনে ভর বদলে "গ্রাফে বিন্দু যোগ" চাপুন। দুটি স্প্রিং (A, B) তুলনা করুন।</p>
+<svg id="gsvg" viewBox="0 0 380 300" class="fig wide"></svg><div id="gout" class="note"></div><button id="gclr">গ্রাফ রিসেট</button>
+<p class="small">সরলরেখার ঢাল (slope = ΔF/Δx) = স্প্রিং ধ্রুবক k। ফাঁপা কমলা বিন্দু = স্থিতিস্থাপক সীমার বাইরে।</p></section>
+
+<section id="exp" hidden><h2>পরীক্ষণ: স্প্রিং ধ্রুবক নির্ণয়</h2>
+<p><b>উদ্দেশ্য:</b> হুকের সূত্র ব্যবহার করে k নির্ণয়। <b>যন্ত্রপাতি:</b> স্প্রিং, রিটর্ট স্ট্যান্ড, ভর হ্যাঙ্গার, স্লটেড ওজন, স্কেল, পয়েন্টার।</p>
+<ol><li>স্প্রিং স্ট্যান্ডে ঝুলিয়ে L₀ পড়ুন (সিমুলেশন ট্যাবে)।</li><li>ভর যোগ করুন, স্থির হওয়ার অপেক্ষা করুন।</li><li>এখানে "পর্যবেক্ষণ যোগ" চাপুন।</li><li>ভর বদলে ৫টি পাঠ নিন, গড় k বের করুন।</li></ol>
+<div class="row"><button id="oadd" class="hot">পর্যবেক্ষণ যোগ</button><button id="odel">শেষটি মুছো</button><button id="orst">টেবিল রিসেট</button><button id="oavg">গড় k</button></div>
+<div class="scroll"><table id="ot" class="dt"><thead><tr><th>ক্রম</th><th>m (kg)</th><th>F (N)</th><th>L₀ (m)</th><th>L (m)</th><th>x (m)</th><th>k (N/m)</th></tr></thead><tbody></tbody></table></div><div id="oout" class="note"></div></section>
+
+<section id="combo" hidden><h2>সিরিজ ও প্যারালাল স্প্রিং</h2>
+<label>k₁: <b id="k1v"></b> N/m<input id="k1" type="range" min="10" max="100" value="40"></label><label>k₂: <b id="k2v"></b> N/m<input id="k2" type="range" min="10" max="100" value="60"></label>
+<div class="grid"><div><h3>Series: 1/k<sub>eq</sub> = 1/k₁ + 1/k₂</h3><svg id="cs" viewBox="0 0 200 260" class="fig"></svg><div id="cso" class="note"></div></div>
+<div><h3>Parallel: k<sub>eq</sub> = k₁ + k₂</h3><svg id="cp" viewBox="0 0 200 260" class="fig"></svg><div id="cpo" class="note"></div></div></div>
+<p>সিরিজে একই বল প্রতিটিতে পড়ে, প্রসারণ যোগ হয় → k<sub>eq</sub> কমে। প্যারালালে বল ভাগ হয়, প্রসারণ একই → k<sub>eq</sub> বাড়ে।</p></section>
+
+<section id="quiz" hidden><h2>অনুশীলনী (র‍্যান্ডম ১০টি)</h2><div class="bar"><i id="qbar"></i></div><div id="qbox"></div><div id="qscore" class="note"></div></section>
+
+<section id="teach" hidden><h2>শিক্ষক মোড</h2>
+<p>ফুলস্ক্রিন বোতাম উপরে। ট্যাব বদলে সিমুলেশন চালান; নিচে র‍্যান্ডম সমস্যা।</p>
+<div id="tq" class="big"></div><div class="row"><button id="tn" class="hot">নতুন সমস্যা</button><button id="tr">সমাধান দেখাও/লুকাও</button></div><div id="ts" class="note" hidden></div></section>
+
+<section id="rev" hidden><h2>দ্রুত রিভিশন</h2><button onclick="print()">প্রিন্ট</button>
+<div class="formula">W = mg &nbsp; x = L − L₀ &nbsp; F = kx &nbsp; k = F/x (x মিটারে)<br>Series: 1/k<sub>eq</sub> = 1/k₁ + 1/k₂ &nbsp; Parallel: k<sub>eq</sub> = k₁ + k₂</div>
+<ul><li>SI একক: F → N, x → m, k → N/m, m → kg।</li><li>cm → m করে তবে k বের করুন (১ cm = 0.01 m)।</li><li>F-x গ্রাফের ঢাল = k।</li><li><b>ভুল:</b> cm-এ k বের করা; x-এর বদলে L বসানো; সিরিজ ও প্যারালাল উল্টো করা।</li><li><b>টিপস:</b> দেওয়া তথ্য, সূত্র, প্রতিস্থাপন, উত্তর+একক — এই ক্রমে লিখুন।</li></ul></section>
+</main><footer>© Nahid Hasan Educare</footer><script src="spring.js"></script></body></html>
